@@ -1,0 +1,204 @@
+{
+  "info": {
+    "title": "MusicStream API",
+    "contact": {
+      "email": "support@musicstreamapi.com"
+    },
+    "version": "1.0.0",
+    "description": "A comprehensive API for accessing music data such as songs, albums, artists, and playlists. Ideal for building music streaming platforms and playlist generation apps."
+  },
+  "tags": [],
+  "paths": {
+    "musicstream-api/songs": {
+      "get": {
+        "summary": "Get a list of songs",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Song"
+                  }
+                }
+              }
+            },
+            "description": "List of songs returned successfully"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "genre",
+            "schema": {
+              "type": "string",
+              "example": "Pop"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "artist",
+            "schema": {
+              "type": "string",
+              "example": "Taylor Swift"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "mood",
+            "schema": {
+              "type": "string",
+              "example": "Happy"
+            },
+            "required": false
+          }
+        ],
+        "description": "Retrieve a list of available songs based on various filters such as genre, artist, or mood."
+      }
+    },
+    "musicstream-api/playlists": {
+      "get": {
+        "summary": "Get playlists",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Playlist"
+                  }
+                }
+              }
+            },
+            "description": "Playlists returned successfully"
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a list of available playlists, either curated or user-generated, based on different criteria like genre or mood."
+      }
+    },
+    "musicstream-api/songs/{songId}": {
+      "get": {
+        "summary": "Get song details",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Song"
+                }
+              }
+            },
+            "description": "Song details returned successfully"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "songId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "description": "Retrieve detailed information about a specific song, including the artist, album, release year, and popularity."
+      }
+    }
+  },
+  "openapi": "3.0.2",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "/",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Song": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 456
+          },
+          "album": {
+            "type": "string",
+            "example": "1989"
+          },
+          "genre": {
+            "type": "string",
+            "example": "Pop"
+          },
+          "title": {
+            "type": "string",
+            "example": "Shake It Off"
+          },
+          "artist": {
+            "type": "string",
+            "example": "Taylor Swift"
+          },
+          "imageUrl": {
+            "type": "string",
+            "example": "https://example.com/images/shake-it-off.jpg"
+          },
+          "popularity": {
+            "type": "integer",
+            "example": 95
+          },
+          "releaseYear": {
+            "type": "integer",
+            "example": 2014
+          }
+        }
+      },
+      "Playlist": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 789
+          },
+          "name": {
+            "type": "string",
+            "example": "Top Pop Hits"
+          },
+          "songs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Song"
+            }
+          },
+          "imageUrl": {
+            "type": "string",
+            "example": "https://example.com/images/top-pop-hits.jpg"
+          },
+          "description": {
+            "type": "string",
+            "example": "A curated playlist featuring the most popular pop hits of the year."
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
