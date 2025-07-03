@@ -1,0 +1,44 @@
+_format_version: '3.0'
+services:
+  - name: api-terra-New route123-service
+    url: https://api.restful-api.dev
+    routes:
+      - name: api-terra-New route123-route
+        paths:
+          - /api-terra/new-route123
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /objects
+  - name: api-terra-Solo-service
+    url: https://api.restful-api.dev
+    routes:
+      - name: api-terra-Solo-route
+        paths:
+          - /api-terra/solo2
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /objects
+  - name: api-terra-New route-service
+    url: https://63ee25ec5e9f1583bdbd0d37.mockapi.io/
+    routes:
+      - name: api-terra-New route-route
+        paths:
+          - /api-terra/usersClima
+        strip_path: true
+        methods:
+          - DELETE
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /users
