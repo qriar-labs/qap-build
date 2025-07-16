@@ -1,0 +1,16 @@
+_format_version: '3.0'
+services:
+  - name: dogs-api-create-service
+    url: https:/dog.ceo
+    routes:
+      - name: dogs-api-create-route
+        paths:
+          - /dogs-api/create
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /api/breeds/image/random
