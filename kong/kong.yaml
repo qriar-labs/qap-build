@@ -1,0 +1,16 @@
+_format_version: '3.0'
+services:
+  - name: api-ip-geolocation-json-service
+    url: https://ipapi.co
+    routes:
+      - name: api-ip-geolocation-json-route
+        paths:
+          - /api-ip-geolocation/8.8.8.8/json
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /8.8.8.8/json

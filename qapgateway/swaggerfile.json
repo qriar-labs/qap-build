@@ -1,0 +1,56 @@
+{
+  "info": {
+    "title": "API-IP Geolocation",
+    "version": "1.0.0",
+    "description": "Geolocation data based on IP."
+  },
+  "tags": [],
+  "paths": {
+    "api-ip-geolocation/8.8.8.8/json": {
+      "get": {
+        "summary": "Get data from IP Geolocation API",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            },
+            "description": "Response from IP Geolocation API API"
+          }
+        },
+        "parameters": [],
+        "description": "Fetch data using the IP Geolocation API API."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "/",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
