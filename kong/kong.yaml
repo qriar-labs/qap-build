@@ -1,0 +1,16 @@
+_format_version: '3.0'
+services:
+  - name: dogs-api-dogs-api-service
+    url: https://dog.ceo
+    routes:
+      - name: dogs-api-dogs-api-route
+        paths:
+          - /dogs-api/dog
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /api/breeds/image/random
