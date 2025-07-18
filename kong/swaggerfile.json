@@ -1,0 +1,130 @@
+{
+  "info": {
+    "title": "API-Guru",
+    "version": "1.0.0",
+    "description": "Access information about API providers and their specifications."
+  },
+  "tags": [],
+  "paths": {
+    "api-guru/": {
+      "get": {
+        "summary": "Get information about APIs",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Information or metadata about APIs.Guru."
+                    }
+                  }
+                }
+              }
+            },
+            "description": "A landing page or metadata about APIs.Guru services."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve basic information about APIs available on APIs.Guru."
+      }
+    },
+    "api-guru/v2/providers.json": {
+      "get": {
+        "summary": "Get API providers",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "apis": {
+                        "type": "object",
+                        "description": "Details about APIs provided by this provider.",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "versions": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                  "info": {
+                                    "type": "object",
+                                    "properties": {
+                                      "title": {
+                                        "type": "string",
+                                        "description": "The title of the API."
+                                      },
+                                      "version": {
+                                        "type": "string",
+                                        "description": "The version of the API."
+                                      }
+                                    }
+                                  },
+                                  "swaggerUrl": {
+                                    "type": "string",
+                                    "description": "The URL of the Swagger/OpenAPI specification."
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the API provider."
+                      },
+                      "slug": {
+                        "type": "string",
+                        "description": "A slug identifier for the API provider."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "A list of API providers with metadata."
+          },
+          "404": {
+            "description": "No providers found."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a list of API providers with metadata and details."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://guru.on.qriarlabs.com",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "https://guru.on.qriarlabs.com",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
