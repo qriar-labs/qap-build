@@ -1,0 +1,30 @@
+_format_version: '3.0'
+services:
+  - name: api-guru--service
+    url: https://api.apis.guru
+    routes:
+      - name: api-guru--route
+        paths:
+          - /api-guru/
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /
+  - name: api-guru-providers.json-service
+    url: https://api.apis.guru
+    routes:
+      - name: api-guru-providers.json-route
+        paths:
+          - /api-guru/v2/providers.json
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /v2/providers.json
