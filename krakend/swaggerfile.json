@@ -1,0 +1,223 @@
+{
+  "info": {
+    "title": "API-TimeZone",
+    "version": "1.0.0",
+    "description": "API for retrieving current time and date information."
+  },
+  "tags": [],
+  "paths": {
+    "api-timezone/Time/current/ip": {
+      "get": {
+        "summary": "Get current time by IP address",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dateTime": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Current date and time in ISO 8601 format."
+                    },
+                    "timeZone": {
+                      "type": "string",
+                      "description": "IANA time zone name."
+                    },
+                    "dayOfWeek": {
+                      "type": "string",
+                      "description": "Day of the week."
+                    },
+                    "utcOffset": {
+                      "type": "string",
+                      "description": "UTC offset for the time zone."
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "dateTime": "2025-01-28T14:27:49",
+                      "timeZone": "America/Sao_Paulo",
+                      "dayOfWeek": "Tuesday",
+                      "utcOffset": "-03:00"
+                    },
+                    "summary": "Sample response"
+                  }
+                }
+              }
+            },
+            "description": "Current time information based on IP address."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve the current time based on the client's IP address."
+      }
+    },
+    "api-timezone/Time/current/zone": {
+      "get": {
+        "summary": "Get current time by time zone",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dateTime": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Current date and time in ISO 8601 format."
+                    },
+                    "timeZone": {
+                      "type": "string",
+                      "description": "IANA time zone name."
+                    },
+                    "dayOfWeek": {
+                      "type": "string",
+                      "description": "Day of the week."
+                    },
+                    "utcOffset": {
+                      "type": "string",
+                      "description": "UTC offset for the time zone."
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "dateTime": "2025-01-28T14:27:49",
+                      "timeZone": "America/Sao_Paulo",
+                      "dayOfWeek": "Tuesday",
+                      "utcOffset": "-03:00"
+                    },
+                    "summary": "Sample response"
+                  }
+                }
+              }
+            },
+            "description": "Current time information for the specified time zone."
+          },
+          "400": {
+            "description": "Invalid time zone provided."
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "timeZone",
+            "schema": {
+              "type": "string",
+              "example": "America/Sao_Paulo"
+            },
+            "required": true,
+            "description": "IANA time zone name (e.g., 'America/Sao_Paulo')."
+          }
+        ],
+        "description": "Retrieve the current time for a specified IANA time zone."
+      }
+    },
+    "api-timezone/Time/current/coordinate": {
+      "get": {
+        "summary": "Get current time by geographic coordinates",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dateTime": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Current date and time in ISO 8601 format."
+                    },
+                    "timeZone": {
+                      "type": "string",
+                      "description": "IANA time zone name."
+                    },
+                    "dayOfWeek": {
+                      "type": "string",
+                      "description": "Day of the week."
+                    },
+                    "utcOffset": {
+                      "type": "string",
+                      "description": "UTC offset for the time zone."
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "dateTime": "2025-01-28T14:27:49",
+                      "timeZone": "America/Sao_Paulo",
+                      "dayOfWeek": "Tuesday",
+                      "utcOffset": "-03:00"
+                    },
+                    "summary": "Sample response"
+                  }
+                }
+              }
+            },
+            "description": "Current time information for the specified coordinates."
+          },
+          "400": {
+            "description": "Invalid coordinates provided."
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "latitude",
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": -23.5505
+            },
+            "required": true,
+            "description": "Latitude of the location."
+          },
+          {
+            "in": "query",
+            "name": "longitude",
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": -46.6333
+            },
+            "required": true,
+            "description": "Longitude of the location."
+          }
+        ],
+        "description": "Retrieve the current time for specified latitude and longitude coordinates."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "/",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
