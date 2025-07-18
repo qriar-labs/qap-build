@@ -1,0 +1,16 @@
+_format_version: '3.0'
+services:
+  - name: clima-api-Paises-service
+    url: https://api.restful-api.dev
+    routes:
+      - name: clima-api-Paises-route
+        paths:
+          - /clima-api/paises/brasil
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /objects
