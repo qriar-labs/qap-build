@@ -1,0 +1,30 @@
+_format_version: '3.0'
+services:
+  - name: user-api-{userId}-service
+    url: http://localhost:3000
+    routes:
+      - name: user-api-{userId}-route
+        paths:
+          - /user-api/users/{userId}
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /users/{userId}
+  - name: user-api-login-service
+    url: http://localhost:3000
+    routes:
+      - name: user-api-login-route
+        paths:
+          - /user-api/login
+        strip_path: true
+        methods:
+          - POST
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /login
