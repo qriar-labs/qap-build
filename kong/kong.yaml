@@ -1,0 +1,21 @@
+_format_version: "3.0"
+services:
+
+  - name: user-api-0
+    url: "https://api.restful-api.dev/objects"
+    routes:
+      - name: user-api-route-0
+        paths:
+          - /user-api/objects
+        methods:
+          - GET
+
+  - name: user-api-1
+    url: "http://localhost:3000/login"
+    routes:
+      - name: user-api-route-1
+        paths:
+          - /user-api/login
+        methods:
+          - POST
+
