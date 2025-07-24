@@ -1,0 +1,214 @@
+_format_version: '3.0'
+services:
+  - name: 1password-connect-heartbeat-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-heartbeat-route
+        paths:
+          - /1password-connect/heartbeat
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /heartbeat
+  - name: 1password-connect-{vaultUuid}-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-{vaultUuid}-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}
+  - name: 1password-connect-items-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-items-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items
+        strip_path: true
+        methods:
+          - POST
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items
+  - name: 1password-connect-{itemUuid}-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-{itemUuid}-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items/{itemUuid}
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}
+  - name: 1password-connect-{itemUuid}-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-{itemUuid}-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items/{itemUuid}
+        strip_path: true
+        methods:
+          - PATCH
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}
+  - name: 1password-connect-files-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-files-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items/{itemUuid}/files
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}/files
+  - name: 1password-connect-{fileUuid}-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-{fileUuid}-route
+        paths:
+          - >-
+            /1password-connect/vaults/{vaultUuid}/items/{itemUuid}/files/{fileUuid}
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}/files/{fileUuid}
+  - name: 1password-connect-content-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-content-route
+        paths:
+          - >-
+            /1password-connect/vaults/{vaultUuid}/items/{itemUuid}/files/{fileUuid}/content
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}/files/{fileUuid}/content
+  - name: 1password-connect-activity-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-activity-route
+        paths:
+          - /1password-connect/activity
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /activity
+  - name: 1password-connect-health-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-health-route
+        paths:
+          - /1password-connect/health
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /health
+  - name: 1password-connect-metrics-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-metrics-route
+        paths:
+          - /1password-connect/metrics
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /metrics
+  - name: 1password-connect-vaults-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-vaults-route
+        paths:
+          - /1password-connect/vaults
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults
+  - name: 1password-connect-items-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-items-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items
+  - name: 1password-connect-{itemUuid}-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-{itemUuid}-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items/{itemUuid}
+        strip_path: true
+        methods:
+          - DELETE
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}
+  - name: 1password-connect-{itemUuid}-service
+    url: http://1password.local
+    routes:
+      - name: 1password-connect-{itemUuid}-route
+        paths:
+          - /1password-connect/vaults/{vaultUuid}/items/{itemUuid}
+        strip_path: true
+        methods:
+          - PUT
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /vaults/{vaultUuid}/items/{itemUuid}
