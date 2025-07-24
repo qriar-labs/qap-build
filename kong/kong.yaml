@@ -1,0 +1,16 @@
+_format_version: '3.0'
+services:
+  - name: api-pokemon-ditto-service
+    url: https://pokeapi.co
+    routes:
+      - name: api-pokemon-ditto-route
+        paths:
+          - /api-pokemon/pokemon/ditto
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /api/v2/pokemon/ditto
