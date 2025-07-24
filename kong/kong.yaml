@@ -1,0 +1,30 @@
+_format_version: '3.0'
+services:
+  - name: user-api-Objects-service
+    url: https://api.restful-api.dev
+    routes:
+      - name: user-api-Objects-route
+        paths:
+          - /user-api/objects
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /objects
+  - name: user-api-login-service
+    url: http://localhost:3000
+    routes:
+      - name: user-api-login-route
+        paths:
+          - /user-api/login
+        strip_path: true
+        methods:
+          - POST
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /login
