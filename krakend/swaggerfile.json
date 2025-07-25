@@ -1,0 +1,56 @@
+{
+  "info": {
+    "title": "API-Dog CEO Dog",
+    "version": "1.0.0",
+    "description": "Images and information about dog breeds."
+  },
+  "tags": [],
+  "paths": {
+    "api-dog-ceo-dog/breeds/image/random": {
+      "get": {
+        "summary": "Get data from Dog CEO Dog API",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            },
+            "description": "Response from Dog CEO Dog API API"
+          }
+        },
+        "parameters": [],
+        "description": "Fetch data using the Dog CEO Dog API API."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://deployment_unit_test.on.qriarlabs.com",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "https://deployment_unit_test.on.qriarlabs.com",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
