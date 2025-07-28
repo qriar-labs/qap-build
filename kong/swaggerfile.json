@@ -1,0 +1,56 @@
+{
+  "info": {
+    "title": "API-Pokemon",
+    "version": "1.0.0",
+    "description": "Data about Pokémon."
+  },
+  "tags": [],
+  "paths": {
+    "api-pokemon/pokemon/ditto": {
+      "get": {
+        "summary": "Get data from Pokemon API",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            },
+            "description": "Response from Pokemon API API"
+          }
+        },
+        "parameters": [],
+        "description": "Fetch data using the Pokemon API API."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://pokemon.on.qriarlabs.com",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "https://pokemon.on.qriarlabs.com",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
