@@ -1,0 +1,1514 @@
+{
+  "version": 3,
+  "name": "swagger-petstore",
+  "output_encoding": "no-op",
+  "timeout": "5000ms",
+  "cache_ttl": "300s",
+  "port": 8080,
+  "plugin": {
+    "pattern": ".so",
+    "folder": "/etc/krakend/plugins/"
+  },
+  "endpoints": [
+    {
+      "endpoint": "/swagger-petstore/user/logout",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/logout",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/logout"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user/login",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/login",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/login"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user/{username}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/{username}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "DELETE",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/{username}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user/{username}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/{username}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/{username}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet/{petId}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet/{petId}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "DELETE",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet/{petId}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet/{petId}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet/{petId}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet/{petId}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user/{username}",
+      "method": "PUT",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/{username}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "PUT",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/{username}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet",
+      "method": "PUT",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "PUT",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet/findByTags",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet/findByTags",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet/findByTags"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet/{petId}",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet/{petId}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet/{petId}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/store/inventory",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/store/inventory",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/store/inventory"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/store/order",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/store/order",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/store/order"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user/createWithArray",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/createWithArray",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/createWithArray"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user/createWithList",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user/createWithList",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user/createWithList"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/store/order/{orderId}",
+      "method": "DELETE",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/store/order/{orderId}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "DELETE",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/store/order/{orderId}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/user",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/user",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/user"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/store/order/{orderId}",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/store/order/{orderId}",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/store/order/{orderId}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet/findByStatus",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet/findByStatus",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet/findByStatus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/swagger-petstore/pet/{petId}/uploadImage",
+      "method": "POST",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/v2/pet/{petId}/uploadImage",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "POST",
+          "cache_ttl": "300s",
+          "host": [
+            "https://petstore.swagger.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "swagger-petstore",
+              "endpoint": "/swagger-petstore/pet/{petId}/uploadImage"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
