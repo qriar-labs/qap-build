@@ -1,0 +1,56 @@
+{
+  "info": {
+    "title": "API-Cat Facts",
+    "version": "1.0.0",
+    "description": "Provides curious facts about cats."
+  },
+  "tags": [],
+  "paths": {
+    "api-cat-facts/fact": {
+      "get": {
+        "summary": "Get data from Cat Facts API",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            },
+            "description": "Response from Cat Facts API API"
+          }
+        },
+        "parameters": [],
+        "description": "Fetch data using the Cat Facts API API."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "/",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
