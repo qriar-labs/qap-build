@@ -1,0 +1,55 @@
+{
+  "info": {
+    "title": "Dogs API",
+    "version": "0.1.9",
+    "description": "API for Dog searchings and managament"
+  },
+  "tags": [],
+  "paths": {
+    "dogs-api/images": {
+      "get": {
+        "summary": "Retrieve Images",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://kyledogdu.on.qriarlabs.com",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "https://kyledogdu.on.qriarlabs.com",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
