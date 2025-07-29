@@ -1,0 +1,56 @@
+{
+  "info": {
+    "title": "API-Rick and Morty",
+    "version": "1.0.0",
+    "description": "Information about characters, episodes, and locations from the series."
+  },
+  "tags": [],
+  "paths": {
+    "api-rick-and-morty/character": {
+      "get": {
+        "summary": "Get data from Rick and Morty API",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            },
+            "description": "Response from Rick and Morty API API"
+          }
+        },
+        "parameters": [],
+        "description": "Fetch data using the Rick and Morty API API."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "/",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
