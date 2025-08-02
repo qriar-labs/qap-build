@@ -1,0 +1,16 @@
+_format_version: '3.0'
+services:
+  - name: api-users-users-service
+    url: https://63ee25ec5e9f1583bdbd0d37.mockapi.io
+    routes:
+      - name: api-users-users-route
+        paths:
+          - /api-users/users
+        strip_path: true
+        methods:
+          - GET
+    plugins:
+      - name: request-transformer
+        config:
+          replace:
+            uri: /users
