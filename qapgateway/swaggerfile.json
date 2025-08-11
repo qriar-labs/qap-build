@@ -1,0 +1,64 @@
+{
+  "info": {
+    "title": "Testing",
+    "version": "0.1.9",
+    "description": "API Created to test QAP"
+  },
+  "tags": [],
+  "paths": {
+    "/testing/dog": {
+      "get": {
+        "summary": "Retrieve Dog",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/testing/dog2": {
+      "get": {
+        "summary": "Retrieve Dog2",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
