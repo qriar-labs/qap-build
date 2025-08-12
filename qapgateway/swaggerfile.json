@@ -1,0 +1,64 @@
+{
+  "info": {
+    "title": "api-product-testing-1",
+    "version": "0.1.9",
+    "description": "testing api products"
+  },
+  "tags": [],
+  "paths": {
+    "/api-product-testing-1/v1.1.0/testing/v1.1.0/dog": {
+      "get": {
+        "summary": "Retrieve Dog",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/api-product-testing-1/v1.1.0/testing/v1.1.0/dog2": {
+      "get": {
+        "summary": "Retrieve Dog2",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
