@@ -1,0 +1,80 @@
+{
+  "info": {
+    "title": "Advice Slip API",
+    "version": "1.0.0",
+    "description": "Retrieve random pieces of advice."
+  },
+  "tags": [],
+  "paths": {
+    "/advice-slip-api/advice": {
+      "get": {
+        "summary": "Get random advice",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slip": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "The unique ID of the advice."
+                        },
+                        "advice": {
+                          "type": "string",
+                          "description": "The text of the advice."
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "slip": {
+                        "id": 123,
+                        "advice": "Always trust your instincts."
+                      }
+                    },
+                    "summary": "Example response"
+                  }
+                }
+              }
+            },
+            "description": "A random piece of advice."
+          },
+          "404": {
+            "description": "Advice not found."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a random piece of advice."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
