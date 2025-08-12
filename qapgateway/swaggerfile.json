@@ -1,0 +1,51 @@
+{
+  "info": {
+    "title": "api-product-testing-1",
+    "version": "0.1.9",
+    "description": "testing api products"
+  },
+  "tags": [],
+  "paths": {
+    "/api-product-testing-1/v1.1.0/testing/v1.1.0/dog": {
+      "get": {
+        "summary": "Retrieve Dog",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
