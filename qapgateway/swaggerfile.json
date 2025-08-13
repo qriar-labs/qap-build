@@ -1,0 +1,247 @@
+{
+  "info": {
+    "title": "Cat Facts API",
+    "version": "1.1.0",
+    "description": "Provides curious facts and breed information about cats."
+  },
+  "tags": [],
+  "paths": {
+    "/cat-facts-api/fact": {
+      "get": {
+        "summary": "Get a random cat fact",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fact"
+                }
+              }
+            },
+            "description": "A random cat fact"
+          }
+        },
+        "parameters": [],
+        "description": "Returns a single random fact about cats.",
+        "operationId": "getRandomFact"
+      }
+    },
+    "/cat-facts-api/facts": {
+      "get": {
+        "summary": "Get a paginated list of cat facts",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedFacts"
+                }
+              }
+            },
+            "description": "Paginated list of cat facts"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "required": false,
+            "description": "Number of facts per page"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "required": false,
+            "description": "Page number"
+          }
+        ],
+        "description": "Returns a list of cat facts with pagination.",
+        "operationId": "getFacts"
+      }
+    },
+    "/cat-facts-api/breeds": {
+      "get": {
+        "summary": "Get a paginated list of cat breeds",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedBreeds"
+                }
+              }
+            },
+            "description": "Paginated list of cat breeds"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "required": false,
+            "description": "Number of breeds per page"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "required": false,
+            "description": "Page number"
+          }
+        ],
+        "description": "Returns a list of cat breeds with pagination.",
+        "operationId": "getBreeds"
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Fact": {
+        "type": "object",
+        "properties": {
+          "fact": {
+            "type": "string",
+            "example": "Cats sleep 70% of their lives."
+          },
+          "length": {
+            "type": "integer",
+            "example": 31
+          }
+        }
+      },
+      "Breed": {
+        "type": "object",
+        "properties": {
+          "coat": {
+            "type": "string",
+            "example": "Short"
+          },
+          "breed": {
+            "type": "string",
+            "example": "Abyssinian"
+          },
+          "origin": {
+            "type": "string",
+            "example": "Natural"
+          },
+          "country": {
+            "type": "string",
+            "example": "Ethiopia"
+          },
+          "pattern": {
+            "type": "string",
+            "example": "Ticked"
+          }
+        }
+      },
+      "PaginatedFacts": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            }
+          },
+          "total": {
+            "type": "integer"
+          },
+          "per_page": {
+            "type": "integer"
+          },
+          "last_page": {
+            "type": "integer"
+          },
+          "current_page": {
+            "type": "integer"
+          },
+          "last_page_url": {
+            "type": "string"
+          },
+          "next_page_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev_page_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_page_url": {
+            "type": "string"
+          }
+        }
+      },
+      "PaginatedBreeds": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Breed"
+            }
+          },
+          "total": {
+            "type": "integer"
+          },
+          "per_page": {
+            "type": "integer"
+          },
+          "last_page": {
+            "type": "integer"
+          },
+          "current_page": {
+            "type": "integer"
+          },
+          "last_page_url": {
+            "type": "string"
+          },
+          "next_page_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "prev_page_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_page_url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
