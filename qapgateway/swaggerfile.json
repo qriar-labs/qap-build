@@ -1,0 +1,148 @@
+{
+  "info": {
+    "title": "testname",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/testname/cat-facts-api/fact": {
+      "get": {
+        "summary": "Get a random cat fact",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fact"
+                }
+              }
+            },
+            "description": "A random cat fact"
+          }
+        },
+        "parameters": [],
+        "description": "Returns a single random fact about cats.",
+        "operationId": "getRandomFact"
+      }
+    },
+    "/testname/cat-facts-api/facts": {
+      "get": {
+        "summary": "Get a paginated list of cat facts",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedFacts"
+                }
+              }
+            },
+            "description": "Paginated list of cat facts"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "required": false,
+            "description": "Number of facts per page"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "required": false,
+            "description": "Page number"
+          }
+        ],
+        "description": "Returns a list of cat facts with pagination.",
+        "operationId": "getFacts"
+      }
+    },
+    "/testname/cat-facts-api/breeds": {
+      "get": {
+        "summary": "Get a paginated list of cat breeds",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedBreeds"
+                }
+              }
+            },
+            "description": "Paginated list of cat breeds"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "required": false,
+            "description": "Number of breeds per page"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "required": false,
+            "description": "Page number"
+          }
+        ],
+        "description": "Returns a list of cat breeds with pagination.",
+        "operationId": "getBreeds"
+      }
+    },
+    "/testname/api-product-dogs112/12": {
+      "get": {
+        "summary": "Retrieve 12",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "parameters": []
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
