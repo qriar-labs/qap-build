@@ -1,0 +1,53 @@
+{
+  "info": {
+    "title": "pokemon",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/pokemon/api-pokemon/pokemon/ditto": {
+      "get": {
+        "summary": "Get data from Pokemon API",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            },
+            "description": "Response from Pokemon API API"
+          }
+        },
+        "parameters": [],
+        "description": "Fetch data using the Pokemon API API."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "https://azure-qap-dev-krakend.lemonflower-d4068cb0.westus2.azurecontainerapps.io/",
+      "description": "Production (qapgateway)"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
