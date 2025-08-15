@@ -1,0 +1,157 @@
+{
+  "info": {
+    "title": "libry",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/ library/undefined/subjects/{subject}.json": {
+      "get": {
+        "summary": "Get books by subject",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "description": "Subject key."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Name of the subject."
+                    },
+                    "works": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "description": "Unique key for the work in Open Library."
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Title of the work."
+                          },
+                          "authors": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "description": "Author's key."
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "description": "Author's name."
+                                }
+                              }
+                            },
+                            "description": "List of authors."
+                          },
+                          "cover_id": {
+                            "type": "integer",
+                            "description": "ID of the cover image."
+                          },
+                          "edition_count": {
+                            "type": "integer",
+                            "description": "Number of editions available."
+                          },
+                          "first_publish_year": {
+                            "type": "integer",
+                            "description": "Year the work was first published."
+                          }
+                        }
+                      }
+                    },
+                    "work_count": {
+                      "type": "integer",
+                      "description": "Number of works related to the subject."
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "key": "science",
+                      "name": "Science",
+                      "works": [
+                        {
+                          "key": "/works/OL67890W",
+                          "title": "A Brief History of Time",
+                          "authors": [
+                            {
+                              "key": "/authors/OL12345A",
+                              "name": "Stephen Hawking"
+                            }
+                          ],
+                          "cover_id": 123456,
+                          "edition_count": 45,
+                          "first_publish_year": 1988
+                        }
+                      ],
+                      "work_count": 1200
+                    },
+                    "summary": "Example response"
+                  }
+                }
+              }
+            },
+            "description": "A list of books related to the specified subject."
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subject",
+            "schema": {
+              "type": "string",
+              "example": "science"
+            },
+            "required": true,
+            "description": "The subject to retrieve books for (e.g., 'science')."
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "example": 10
+            },
+            "required": false,
+            "description": "Number of results to return."
+          }
+        ],
+        "description": "Retrieve a list of books related to a specific subject."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
