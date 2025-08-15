@@ -1,0 +1,133 @@
+{
+  "info": {
+    "title": "MusicStream",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/musicstream/musicstream-api/songs": {
+      "get": {
+        "summary": "Get a list of songs",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Song"
+                  }
+                }
+              }
+            },
+            "description": "List of songs returned successfully"
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "name": "genre",
+            "schema": {
+              "type": "string",
+              "example": "Pop"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "artist",
+            "schema": {
+              "type": "string",
+              "example": "Taylor Swift"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "mood",
+            "schema": {
+              "type": "string",
+              "example": "Happy"
+            },
+            "required": false
+          }
+        ],
+        "description": "Retrieve a list of available songs based on various filters such as genre, artist, or mood."
+      }
+    },
+    "/musicstream/musicstream-api/playlists": {
+      "get": {
+        "summary": "Get playlists",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Playlist"
+                  }
+                }
+              }
+            },
+            "description": "Playlists returned successfully"
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a list of available playlists, either curated or user-generated, based on different criteria like genre or mood."
+      }
+    },
+    "/musicstream/musicstream-api/songs/{songId}": {
+      "get": {
+        "summary": "Get song details",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Song"
+                }
+              }
+            },
+            "description": "Song details returned successfully"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "songId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "description": "Retrieve detailed information about a specific song, including the artist, album, release year, and popularity."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Default server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
