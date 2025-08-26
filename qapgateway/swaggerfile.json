@@ -1,0 +1,96 @@
+{
+  "info": {
+    "title": "API-Chuck Norris",
+    "version": "1.0.0",
+    "description": "Get random jokes and joke categories from the Chuck Norris API."
+  },
+  "tags": [],
+  "paths": {
+    "api-chuck-norris/jokes/random": {
+      "get": {
+        "summary": "Get a random joke",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the joke."
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "URL to view the joke."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The content of the joke."
+                    },
+                    "icon_url": {
+                      "type": "string",
+                      "description": "URL of the joke's icon."
+                    }
+                  }
+                }
+              }
+            },
+            "description": "A random Chuck Norris joke."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a random Chuck Norris joke."
+      }
+    },
+    "api-chuck-norris/jokes/categories": {
+      "get": {
+        "summary": "Get joke categories",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "Name of a joke category."
+                  }
+                }
+              }
+            },
+            "description": "A list of joke categories."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a list of all joke categories."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [
+    {
+      "url": "/",
+      "description": "Main (production) server"
+    },
+    {
+      "url": "/",
+      "description": "Internal test server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
