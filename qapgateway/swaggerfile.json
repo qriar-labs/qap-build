@@ -1,0 +1,88 @@
+{
+  "info": {
+    "title": "Dogs",
+    "version": "0.1.9",
+    "description": "Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML."
+  },
+  "tags": [],
+  "paths": {
+    "/dogs/api-chuck-norris/jokes/random": {
+      "get": {
+        "summary": "Get a random joke",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Unique identifier for the joke."
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "URL to view the joke."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The content of the joke."
+                    },
+                    "icon_url": {
+                      "type": "string",
+                      "description": "URL of the joke's icon."
+                    }
+                  }
+                }
+              }
+            },
+            "description": "A random Chuck Norris joke."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a random Chuck Norris joke."
+      }
+    },
+    "/dogs/api-chuck-norris/jokes/categories": {
+      "get": {
+        "summary": "Get joke categories",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "Name of a joke category."
+                  }
+                }
+              }
+            },
+            "description": "A list of joke categories."
+          }
+        },
+        "parameters": [],
+        "description": "Retrieve a list of all joke categories."
+      }
+    }
+  },
+  "openapi": "3.0.0",
+  "servers": [],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "requestBodies": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
