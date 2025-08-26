@@ -1,0 +1,164 @@
+{
+  "version": 3,
+  "name": "chuck-norris-api",
+  "output_encoding": "no-op",
+  "timeout": "5000ms",
+  "cache_ttl": "300s",
+  "port": 8080,
+  "plugin": {
+    "pattern": ".so",
+    "folder": "/etc/krakend/plugins/"
+  },
+  "endpoints": [
+    {
+      "endpoint": "/chuck-norris-api/jokes/categories",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/jokes/categories",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://api.chucknorris.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "chuck-norris-api",
+              "endpoint": "/chuck-norris-api/jokes/categories"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/chuck-norris-api/jokes/random",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "input_headers": [
+        "Authorization",
+        "X-User",
+        "X-Roles"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://idp.konneqt.cloud/realms/qap-stg/protocol/openid-connect/certs",
+          "propagate_claims": [
+            [
+              "sub",
+              "X-User"
+            ],
+            [
+              "realm_access.roles",
+              "X-Roles"
+            ]
+          ],
+          "propagate_headers": [
+            "Authorization"
+          ]
+        },
+        "security/cors": {
+          "allow_origins": [
+            "*"
+          ],
+          "allow_methods": [
+            "GET",
+            "HEAD",
+            "POST"
+          ],
+          "expose_headers": [
+            "Content-Length",
+            "Content-Type"
+          ],
+          "allow_headers": [
+            "Accept-Language"
+          ],
+          "max_age": "12h",
+          "allow_credentials": false
+        },
+        "proxy": {
+          "sequential": true
+        },
+        "error": {
+          "return_status_code": 400,
+          "return_body": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/jokes/random",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "cache_ttl": "300s",
+          "host": [
+            "https://api.chucknorris.io"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "plugin/http-client": {
+              "name": "qap-krakend-plugin",
+              "gateway_name": "chuck-norris-api",
+              "endpoint": "/chuck-norris-api/jokes/random"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
